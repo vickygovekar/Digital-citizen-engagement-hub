@@ -1,20 +1,27 @@
 # Digital Citizen Engagement Hub
 
-## Overview
-Digital Citizen Engagement Hub is a full-stack web application developed as part of an internship project.  
-The goal of the platform is to strengthen communication between citizens and government authorities by providing a digital space where issues can be reported, tracked, and discussed transparently.
+## Project Description
+Digital Citizen Engagement Hub is a full-stack web application developed as part of an internship project. The platform aims to improve communication between citizens and local authorities by providing a centralized digital space where citizens can report issues, track their status, and engage with community discussions.
 
-The application follows a client–server architecture with a modern frontend and a REST-based backend connected to a database.
+The project follows a client–server architecture with a modern frontend and a RESTful backend connected to a relational database.
+
+---
+
+## Overview
+Traditional grievance redressal systems are often slow and lack transparency. This project addresses that gap by offering a digital solution where citizens can actively participate in civic engagement and authorities can manage reported issues more efficiently.
+
+The system is designed to be scalable, modular, and easy to extend with additional administrative and analytical features.
 
 ---
 
 ## Key Features
 - Citizen issue reporting with image uploads
-- Community feed to view and discuss reported issues
+- Community feed to view reported civic issues
 - Issue status tracking
-- User authentication and validation
-- Admin-ready backend structure for future role-based access
-- Clean separation of frontend and backend code
+- Structured backend APIs
+- File upload handling for reported issues
+- Clean separation of frontend and backend
+- Database-driven data management
 
 ---
 
@@ -22,20 +29,18 @@ The application follows a client–server architecture with a modern frontend an
 
 ### Frontend (Client)
 - React (Vite)
-- HTML5, CSS3
+- HTML5
+- CSS3
 - JavaScript (ES6+)
-- Component-based UI architecture
 
 ### Backend (Server)
 - Node.js
 - Express.js
-- RESTful APIs
-- File upload handling (images)
-- SQL-based database integration
+- RESTful API architecture
 
 ### Database
 - MySQL
-- Structured schema using SQL scripts
+- SQL schema defined in `civic_hub.sql`
 
 ---
 
@@ -43,22 +48,24 @@ The application follows a client–server architecture with a modern frontend an
 
 Digital citizen engagement hub
 │
-├── client # Frontend application
+├── client
 │ ├── public
 │ ├── src
 │ │ ├── App.jsx
 │ │ ├── Dashboard.jsx
 │ │ ├── CommunityFeed.jsx
 │ │ ├── IssueDetailsModal.jsx
-│ │ └── Stylesheets
+│ │ └── styles
 │ ├── index.html
+│ ├── eslint.config.js
 │ ├── package.json
+│ ├── package-lock.json
 │ └── vite.config.js
 │
-├── server # Backend application
+├── server
 │ ├── server.js
 │ ├── check_users.js
-│ ├── database_setup.sql
+│ ├── civic_hub.sql
 │ ├── uploads
 │ ├── package.json
 │ └── package-lock.json
@@ -70,18 +77,21 @@ Digital citizen engagement hub
 
 ## Application Flow
 1. Users interact with the frontend built using React.
-2. Requests are sent to the backend via REST APIs.
-3. The backend processes requests, stores data in the database, and manages file uploads.
-4. The frontend dynamically updates the UI based on server responses.
+2. The frontend sends HTTP requests to the backend APIs.
+3. The backend processes requests, handles file uploads, and communicates with the database.
+4. Data is stored and retrieved from MySQL using structured SQL queries.
+5. The frontend updates dynamically based on server responses.
 
 ---
 
 ## Database Design
-The database is initialized using the `civic_hub.sql` file and contains structured tables to store:
-- User information
-- Issue details
-- Uploaded media references
-- Status tracking data
+The database schema is defined in the `civic_hub.sql` file. It includes tables for:
+- User details
+- Civic issues reported by citizens
+- Issue status and updates
+- Image/file references for uploaded media
+
+The schema ensures structured storage and easy retrieval of civic engagement data.
 
 ---
 
@@ -89,43 +99,61 @@ The database is initialized using the `civic_hub.sql` file and contains structur
 
 ### Prerequisites
 - Node.js
-- MySQL
 - npm
+- MySQL
+
+---
 
 ### Backend Setup
-```bash
+1. Navigate to the server directory:
 cd server
+
+2. Install dependencies:
 npm install
+
+3. Import the database:
+- Open MySQL
+- Run the `civic_hub.sql` file to create the database and tables
+
+4. Start the server:
 node server.js
-Frontend Setup
+
+
+---
+
+### Frontend Setup
+1. Navigate to the client directory:
 cd client
+
+2. Install dependencies:
 npm install
+
+3. Start the development server:
 npm run dev
-Internship Context
+
+
+---
+
+## Internship Context
 This project was developed as part of an internship to gain hands-on experience in:
+- Full-stack web development
+- Client–server architecture
+- REST API development
+- Database integration
+- Real-world civic problem solving
 
-Full-stack web development
+---
 
-Client–server architecture
+## Future Enhancements
+- Role-based access control (Admin and Citizen)
+- Real-time issue status notifications
+- Advanced admin dashboard
+- Data analytics and reporting
+- Cloud deployment
 
-REST API design
+---
 
-Database integration
-
-Real-world problem solving for civic engagement
-
-Future Enhancements
-Role-based access control (Admin / Citizen)
-
-Real-time notifications
-
-Analytics dashboard for authorities
-
-Improved security and validation
-
-Deployment to cloud platforms
-
-Author
-Vicky
-Computer Engineering Student
+## Author
+**Vicky**  
+Computer Engineering Student  
 Internship Project – Digital Citizen Engagement Hub
