@@ -44,37 +44,6 @@ The system is designed to be scalable, modular, and easy to extend with addition
 
 ---
 
-## Project Structure
-
-Digital citizen engagement hub
-│
-├── client
-│ ├── public
-│ ├── src
-│ │ ├── App.jsx
-│ │ ├── Dashboard.jsx
-│ │ ├── CommunityFeed.jsx
-│ │ ├── IssueDetailsModal.jsx
-│ │ └── styles
-│ ├── index.html
-│ ├── eslint.config.js
-│ ├── package.json
-│ ├── package-lock.json
-│ └── vite.config.js
-│
-├── server
-│ ├── server.js
-│ ├── check_users.js
-│ ├── civic_hub.sql
-│ ├── uploads
-│ ├── package.json
-│ └── package-lock.json
-│
-└── README.md
-
-
----
-
 ## Application Flow
 1. Users interact with the frontend built using React.
 2. The frontend sends HTTP requests to the backend APIs.
