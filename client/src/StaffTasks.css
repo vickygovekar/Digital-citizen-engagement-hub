@@ -1,0 +1,420 @@
+:root {
+    --primary: #0f172a;
+    /* Slate 900 */
+    --primary-light: #1e293b;
+    /* Slate 800 */
+    --accent: #3b82f6;
+    /* Blue 500 */
+    --bg-body: #f1f5f9;
+    --surface: #ffffff;
+    --text-main: #0f172a;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --sidebar-width: 280px;
+    --radius: 16px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.staff-tasks-body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR (Dark Theme) --- */
+/* Reusing styles from StaffDashboard.css where possible, but defining specific ones here if needed or just relying on global if I were to refactor. 
+   For now, I'll include the necessary sidebar styles to ensure it looks correct independently or if I import this file. 
+   However, since we are in a React app, we might just import StaffDashboard.css or have a shared CSS. 
+   To be safe and follow the user's "page" model, I'll include the relevant styles here but scoped or just standard.
+*/
+
+/* --- MAIN CONTENT --- */
+.staff-main-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 2.5rem 3rem;
+    max-width: 1600px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.header-title h1 {
+    font-size: 2rem;
+    color: var(--text-main);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.header-title p {
+    color: var(--text-sub);
+    font-size: 1.05rem;
+}
+
+.task-count {
+    background: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- TOOLBAR --- */
+.toolbar {
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.filter-group {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-sub);
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    background: #f1f5f9;
+    color: var(--text-main);
+}
+
+.filter-btn.active {
+    background: #eff6ff;
+    color: var(--accent);
+    border-color: rgba(59, 130, 246, 0.2);
+    font-weight: 600;
+}
+
+.sort-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sort-select {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: #f8fafc;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* --- TASK LIST --- */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.task-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    transition: all 0.2s;
+    position: relative;
+    /* overflow: hidden;  <-- REMOVED TO ALLOW DROPDOWN OVERFLOW */
+}
+
+.task-item:hover {
+    box-shadow: var(--shadow);
+    border-color: #cbd5e1;
+    transform: translateX(4px);
+}
+
+.priority-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.priority-high {
+    background: var(--danger);
+}
+
+.priority-med {
+    background: var(--warning);
+}
+
+.priority-low {
+    background: var(--success);
+}
+
+.task-content {
+    flex: 1;
+}
+
+.task-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-id {
+    font-family: 'Outfit', sans-serif;
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    margin-right: 12px;
+    font-weight: 600;
+}
+
+.task-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.task-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+.task-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.task-meta i {
+    color: #94a3b8;
+}
+
+.task-desc {
+    font-size: 1rem;
+    color: var(--text-sub);
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    line-height: 1.6;
+}
+
+/* Actions */
+.task-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 1.2rem;
+}
+
+.status-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.status-pill {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+    font-family: inherit;
+    min-width: 120px;
+    justify-content: space-between;
+}
+
+.status-pill:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.status-pill.open {
+    background: #fee2e2;
+    color: #ef4444;
+    border-color: #fecaca;
+}
+
+.status-pill.in-progress {
+    background: #ffedd5;
+    color: #f59e0b;
+    border-color: #fed7aa;
+}
+
+.status-pill.resolved {
+    background: #dcfce7;
+    color: #10b981;
+    border-color: #bbf7d0;
+}
+
+.status-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 6px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    width: 160px;
+    z-index: 50;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.status-option {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.15s;
+    font-weight: 500;
+}
+
+.status-option:hover {
+    background: #f8fafc;
+}
+
+.status-option.selected {
+    background: #f1f5f9;
+    font-weight: 600;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dot.open {
+    background: #ef4444;
+}
+
+.dot.in-progress {
+    background: #f59e0b;
+}
+
+.dot.resolved {
+    background: #10b981;
+}
+
+.btn-save {
+    display: none;
+    /* Hide old save button styles just in case */
+}
+
+.btn-evidence {
+    text-decoration: none;
+    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.btn-evidence:hover {
+    background: #eff6ff;
+}
+
+/* Priority Badge */
+.prio-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.bg-prio-high {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.date-text {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+    .task-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .status-form {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
